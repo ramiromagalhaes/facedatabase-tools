@@ -34,11 +34,7 @@ int main(int argc, char* args[])
     pgm_params.push_back(1);
 
 
-    const float distanceBetweenEyes = 95; //assumed from Normalização Espacial de Imagens Frontais de Face em Ambientes Controlados e Não-Controlados
-    cv::Point2f rightEye(90, 175); //inferred from images
-    const float roiWidthHeight = 185; //width and height of the ROI
-    const int roiX = rightEye.x - roiWidthHeight * 0.2423f;
-    const int roiY = rightEye.y - roiWidthHeight * 0.25f;
+    const cv::Rect roi(25, 55, 200, 200);
 
     int resizeCounter = 0;
     fs::directory_iterator end; // default construction == end. Weird...
@@ -55,7 +51,6 @@ int main(int argc, char* args[])
             std::cerr << "Failed to load file " <<  it->path().native() << std::endl;
         }
 
-        cv::Rect roi(roiX, roiY, (int)roiWidthHeight, (int)roiWidthHeight);
         cv::Mat face(image, roi);
 
         cv::Mat resizedFace = cv::Mat(20, 20, CV_8UC1);
