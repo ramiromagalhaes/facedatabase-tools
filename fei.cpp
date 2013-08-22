@@ -56,7 +56,7 @@ int main(int argc, char* args[])
         cv::Mat resizedFace = cv::Mat(20, 20, CV_8UC1);
         cv::resize(face, resizedFace, cv::Size(20, 20)/*, 0, 0, INTER_LINEAR*/);
 
-        const fs::path trainingSamplePath = destFolder / it->path().filename();
+        const fs::path trainingSamplePath = destFolder / (it->path().stem().native() + ".pgm");
         cv::imwrite(trainingSamplePath.native(), resizedFace);
 
         resizeCounter++;
