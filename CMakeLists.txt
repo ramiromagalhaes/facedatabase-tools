@@ -8,7 +8,7 @@ set(CMAKE_CSS_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
 
 # More on find_package command http://www.cmake.org/Wiki/CMake:How_To_Find_Libraries
 find_package( OpenCV REQUIRED COMPONENTS core imgproc highgui )
-find_package( Boost REQUIRED COMPONENTS filesystem system )
+find_package( Boost 1.54.0 REQUIRED COMPONENTS filesystem system )
 
 #To manipulate the MIT-CBCL database
 add_executable( cbcl "cbcl.cpp" )
@@ -21,3 +21,7 @@ target_link_libraries( bioid ${OpenCV_LIBS} ${Boost_LIBRARIES} )
 #To manipulate the FEI database
 add_executable( fei "fei.cpp" )
 target_link_libraries( fei ${OpenCV_LIBS} ${Boost_LIBRARIES} )
+
+#To merge samples in one big file
+add_executable( merge "merge.cpp" )
+target_link_libraries( merge ${OpenCV_LIBS} ${Boost_LIBRARIES} )
