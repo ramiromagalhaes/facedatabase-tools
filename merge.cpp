@@ -79,9 +79,9 @@ int main(int argc, char* args[])
 
         std::stringstream fileNumber;
         fileNumber << currentFile << ".pgm";
-        boost::filesystem::path ouputPath = outputFolder / fileNumber.str();
-        std::cout << "Writing file " << outputPath.native << "." << std::endl;
-        cv::imwrite(ouputPath.native(), output);
+        boost::filesystem::path outputPath = outputFolder / fileNumber.str();
+        std::cout << "Writing file " << outputPath.native() << "." << std::endl;
+        cv::imwrite(outputPath.native(), output);
     }
 
     return 0;
