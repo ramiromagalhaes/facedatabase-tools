@@ -6,6 +6,9 @@ project(facedatabase-tools)
 set(CMAKE_CXX_FLAGS_DEBUG   "${CMAKE_CXX_FLAGS_DEBUG} -ggdb -D_DEBUG -Wextra -Wall")
 set(CMAKE_CSS_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
 
+include_directories(/home/ramiro/workspace/oiio/dist/linux64.debug/include)
+link_directories(/home/ramiro/workspace/oiio/dist/linux64.debug/lib)
+
 # More on find_package command http://www.cmake.org/Wiki/CMake:How_To_Find_Libraries
 find_package( OpenCV REQUIRED COMPONENTS core imgproc highgui )
 find_package( Boost 1.54.0 REQUIRED COMPONENTS filesystem system )
@@ -25,3 +28,11 @@ target_link_libraries( fei ${OpenCV_LIBS} ${Boost_LIBRARIES} )
 #To merge samples in one big file
 add_executable( merge "merge.cpp" )
 target_link_libraries( merge ${OpenCV_LIBS} ${Boost_LIBRARIES} )
+
+#To merge samples in one big file
+add_executable( count "count.cpp" )
+target_link_libraries( count OpenImageIO)
+
+#To merge samples in one big file
+add_executable( show "show.cpp" )
+target_link_libraries( show ${OpenCV_LIBS} OpenImageIO)
