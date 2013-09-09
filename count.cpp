@@ -3,7 +3,7 @@
 
 #include <OpenImageIO/imageio.h>
 
-namespace oiio = OpenImageIO::v1_2;
+namespace oiio = OIIO;
 
 
 
