@@ -38,14 +38,15 @@ int main(int argc, char* args[])
                                        std::istreambuf_iterator<char>(), '\n');
     index.clear();
     index.seekg(0, std::ios::beg);
+    std::cout << "Total of images found in index: " << totalImages << std::endl;
 
-    std::cout << "Total of images found on index: " << totalImages << std::endl;
 
-    const int maxImagesPerFile = std::numeric_limits<int>::max() / 20;
+
+    const int maxImagesPerFile = std::numeric_limits<int>::max() / 20; //20 is the pixel size of each image
     const int totalFiles = 1 + totalImages / maxImagesPerFile;
 
-    int totalImagesProcessed = 0;
 
+    int totalImagesProcessed = 0;
     for (int currentFile = 0; currentFile < totalFiles; ++currentFile)
     {
         const int imagesInThisFile =
@@ -67,7 +68,7 @@ int main(int argc, char* args[])
             const cv::Mat img = cv::imread(imagePathString, cv::IMREAD_GRAYSCALE);
             if (img.data == 0)
             {
-                return 1000;
+                return 3;
             }
 
             const cv::Rect roi_rect(20 * i, 0, 20, 20);
