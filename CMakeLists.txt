@@ -36,3 +36,7 @@ target_link_libraries( count OpenImageIO)
 #To merge samples in one big file
 add_executable( show "show.cpp" )
 target_link_libraries( show ${OpenCV_LIBS} OpenImageIO)
+
+#To merge samples in one big file
+add_executable( iterate "iterate.cpp" )
+target_link_libraries( iterate ${OpenCV_LIBS} OpenImageIO)
