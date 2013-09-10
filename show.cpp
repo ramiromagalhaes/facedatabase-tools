@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
 
 #include <OpenImageIO/imageio.h>
 
@@ -23,6 +24,15 @@ int main(int argc, char* args[])
         std::stringstream ss;
         ss << args[2];
         ss >> index;
+    }
+
+    { //file exists?
+        std::ifstream in(filePath.c_str());
+        if ( !in.is_open() )
+        {
+            return 2;
+        }
+        in.close();
     }
 
     ImageInput *in = ImageInput::open (filePath);
