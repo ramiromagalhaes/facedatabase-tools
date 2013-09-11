@@ -40,12 +40,11 @@ int main(int argc, char* args[])
     const imagesize_t size = (imagesize_t)spec.width * spec.height; //Notice one of the rvalues must be of type
                                                                     //imagesize_t, or the result will be coerced to int
                                                                     //and be a lot smaller than needed
-    unsigned char * pixels = new unsigned char[size];
-    in->read_image(TypeDesc::UCHAR, pixels);
+    cv::Mat image(spec.height, spec.width, CV_8UC1);
+    in->read_image(TypeDesc::UCHAR, image.data); //writes directly on the matrix buffer. It seems it works.
     in->close();
     std::cout << "Done reading." << std::endl;
 
-    cv::Mat image(spec.height, spec.width, CV_8UC1, pixels);
     cv::Rect roi(index * 20, 0, 20, 20);
 
     cv::imshow("Selected ROI", image(roi));
