@@ -25,6 +25,10 @@ target_link_libraries( bioid ${OpenCV_LIBS} ${Boost_LIBRARIES} )
 add_executable( fei "fei.cpp" )
 target_link_libraries( fei ${OpenCV_LIBS} ${Boost_LIBRARIES} )
 
+#To manipulate the FEI database
+add_executable( ar "ar.cpp" )
+target_link_libraries( ar ${OpenCV_LIBS} ${Boost_LIBRARIES} )
+
 #To merge samples in one big file
 add_executable( merge "merge.cpp" )
 target_link_libraries( merge ${OpenCV_LIBS} ${Boost_LIBRARIES} )
