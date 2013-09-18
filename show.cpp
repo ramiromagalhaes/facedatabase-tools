@@ -8,20 +8,35 @@
 
 int main(int argc, char* args[])
 {
-    if (argc < 3)
+    const std::string imagePath = args[1];
+    const std::string indexPath = args[2];
+
+    std::vector<int> indexes;
     {
-        return 1;
-    }
-    const std::string filePath = args[1];
-    int index;
-    {
-        std::stringstream ss;
-        ss << args[2];
-        ss >> index;
+        std::ifstream in(indexPath.c_str());
+        if ( !in.is_open() )
+        {
+            return 1;
+        }
+
+        while(true)
+        {
+            int index;
+            in >> index;
+
+            if ( in.eof() )
+            {
+                break;
+            }
+
+            indexes.push_back(index);
+        }
+
+        in.close();
     }
 
-    { //file exists?
-        std::ifstream in(filePath.c_str());
+    { //image exists?
+        std::ifstream in(imagePath.c_str());
         if ( !in.is_open() )
         {
             return 2;
@@ -29,10 +44,24 @@ int main(int argc, char* args[])
         in.close();
     }
 
-    cv::Mat image = cv::imread(filePath, CV_LOAD_IMAGE_GRAYSCALE);
-    cv::Rect roi(index * 20, 0, 1000, 20);
+    cv::Mat image = cv::imread(imagePath, CV_LOAD_IMAGE_GRAYSCALE);
 
-    cv::imshow("Selected ROI", image(roi));
+    cv::Mat output = cv::Mat::zeros(20 * (indexes.size() / 100 + (indexes.size() % 100 != 0)),
+                                    2000,
+                                    cv::DataType<unsigned char>::type);
+
+    for (unsigned int i = 0; i < indexes.size(); ++i)
+    {
+        cv::Rect input_roi(indexes[i] * 20, 0, 20, 20);
+
+        cv::Rect output_roi( (i * 20) % output.cols,
+                              20 * (i * 20 / output.cols),
+                              20, 20 );
+
+        image(input_roi).copyTo(output(output_roi));
+    }
+
+    cv::imshow("Selected ROI", output);
     cv::waitKey(0);
 
     return 0;
