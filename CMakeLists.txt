@@ -37,10 +37,10 @@ target_link_libraries( merge ${OpenCV_LIBS} ${Boost_LIBRARIES} )
 add_executable( count "count.cpp" )
 target_link_libraries( count OpenImageIO)
 
-#To merge samples in one big file
+#Display samples from a list of indexes
 add_executable( show "show.cpp" )
 target_link_libraries( show ${OpenCV_LIBS} OpenImageIO)
 
-#To merge samples in one big file
-add_executable( iterate "iterate.cpp" )
-target_link_libraries( iterate ${OpenCV_LIBS} OpenImageIO)
+#Display samples randomly
+add_executable( showrand "showrand.cpp" )
+target_link_libraries( showrand ${OpenCV_LIBS} OpenImageIO)
