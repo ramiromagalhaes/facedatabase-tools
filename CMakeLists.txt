@@ -43,4 +43,8 @@ target_link_libraries( show ${OpenCV_LIBS} OpenImageIO)
 
 #Display samples randomly
 add_executable( showrand "showrand.cpp" )
-target_link_libraries( showrand ${OpenCV_LIBS} OpenImageIO)
+target_link_libraries( showrand ${OpenCV_LIBS})
+
+#Estimates the variance of samples of a database and returns their indexes sorted from highest to lowest
+add_executable( evalsamples "evalsamples.cpp" )
+target_link_libraries( evalsamples ${OpenCV_LIBS})
