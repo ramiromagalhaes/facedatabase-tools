@@ -21,7 +21,7 @@ struct entry {
 
 int main(int argc, char* args[])
 {
-    if (argc != 2)
+    if (argc < 2 && argc > 3)
     {
         return 3;
     }
@@ -63,7 +63,7 @@ int main(int argc, char* args[])
 
     std::sort(stdDeviations.begin(), stdDeviations.end());
 
-    for(std::vector<entry>::iterator it = stdDeviations.begin(); it != stdDeviations.end(); ++it)
+    for(std::vector<entry>::iterator it = stdDeviations.begin(); it - stdDeviations.begin() < 6000; ++it)
     {
         std::cout << it->index << ' ';
     }
