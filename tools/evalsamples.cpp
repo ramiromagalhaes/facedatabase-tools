@@ -41,9 +41,6 @@ int main(int argc, char* args[])
         in.close();
     }
 
-    std::vector<cv::Mat> samples;
-    std::vector<unsigned int> samplesIndexes;
-
     const cv::Size roiSize(20 ,20);
     const cv::Mat full_image = cv::imread(imagePath, cv::DataType<unsigned char>::type);
 
