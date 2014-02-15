@@ -19,6 +19,11 @@ struct entry {
 
 
 
+/**
+ * Evaluates image samples. Receives as argument the path of the image that
+ * is a composition of 20x20 samples of images. Outputs indexes of samples ordered
+ * by decreasing variance.
+ */
 int main(int argc, char* args[])
 {
     if (argc < 2 && argc > 3)
