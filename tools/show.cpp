@@ -35,7 +35,7 @@ int main(int argc, char* args[])
         in.close();
     }
 
-    { //image exists?
+    { //source image exists?
         std::ifstream in(imagePath.c_str());
         if ( !in.is_open() )
         {
