@@ -7,8 +7,15 @@ namespace oiio = OIIO;
 
 
 
+/**
+ * Counts the amount of samples a database has.
+ * A sample database is just an image where each sample is placed side-by-side.
+ * It is assumed that each sample is a 20x20 pixels image.
+ */
 int main(int argc, char* args[])
 {
+    int sample_size = 20;
+
     if (argc != 2)
     {
         return 1;
@@ -23,7 +30,7 @@ int main(int argc, char* args[])
     }
 
     const oiio::ImageSpec & spec = in->spec();
-    std::cout << spec.width / 20 << std::endl;
+    std::cout << spec.width / sample_size << std::endl;
 
     /*
     int channels = spec.nchannels;
