@@ -32,13 +32,6 @@ int main(int argc, char* args[])
     const oiio::ImageSpec & spec = in->spec();
     std::cout << spec.width / sample_size << std::endl;
 
-    /*
-    int channels = spec.nchannels;
-    std::vector<unsigned char> pixels ((long)width * heigh * channels);
-    in->read_image (oiio::TypeDesc::UINT8, &pixels[0]);
-    in->close ();
-    */
-
     delete in;
 
     return 0;
