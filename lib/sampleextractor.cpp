@@ -106,7 +106,7 @@ bool SampleExtractor::extractFromBigImage(const std::string &imagePath,
     samples.resize(total_images);
     for (unsigned int i = 0; i < total_images; ++i)
     {
-        cv::Rect roi(i * 20, 0, samplesSize.width, samplesSize.height);
+        cv::Rect roi(i * samplesSize.width, 0, samplesSize.width, samplesSize.height);
 
         cv::Mat image = cv::Mat(full_image, roi);
         if ( !image.data )
