@@ -28,6 +28,7 @@ int main(int argc, char* args[])
 {
     if (argc < 2 && argc > 3)
     {
+        std::cout << "Usage: " << args[0] << "IMAGE_PATH" << std::endl;
         return 3;
     }
     const std::string imagePath = args[1];
@@ -36,6 +37,7 @@ int main(int argc, char* args[])
         std::ifstream in(imagePath.c_str());
         if ( !in.is_open() )
         {
+            std::cout << "File '" << imagePath <<  "' cannot be opened." << std::endl;
             return 2;
         }
         in.close();
@@ -65,11 +67,10 @@ int main(int argc, char* args[])
 
     std::sort(stdDeviations.begin(), stdDeviations.end());
 
-    for(std::vector<entry>::iterator it = stdDeviations.begin(); it - stdDeviations.begin() < 6000; ++it)
+    for(std::vector<entry>::iterator it = stdDeviations.begin(); it != stdDeviations.end(); ++it)
     {
-        std::cout << it->index << ' ';
+        std::cout << it->index << '\n';
     }
-    std::cout << std::endl;
 
     return 0;
 }
