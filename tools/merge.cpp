@@ -12,7 +12,7 @@
 
 
 
-#define USAGE "Usage: " << args[0] << "INDEX_FILE OUTPUT_FOLDER" << std::endl
+#define MERGE_USAGE "Usage: " << args[0] << " INDEX_FILE OUTPUT_FOLDER" << std::endl
 
 
 
@@ -25,7 +25,7 @@ int main(int argc, char* args[])
 {
     if (argc != 3)
     {
-        std::cout << USAGE;
+        std::cout << MERGE_USAGE;
         return 1;
     }
 
@@ -37,7 +37,7 @@ int main(int argc, char* args[])
          || !boost::filesystem::exists(outputFolder)
          || !boost::filesystem::is_directory(outputFolder) )
     {
-        std::cout << USAGE;
+        std::cout << MERGE_USAGE;
         return 2;
     }
 

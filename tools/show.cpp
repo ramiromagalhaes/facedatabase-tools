@@ -6,8 +6,19 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+#define SHOW_USAGE std::cout << "Usage: " << args[0] << " IMAGE_PATH INDEX_PATH";
+
+
+/**
+ * Shows samples listed in the second argument taken from the first argument.
+ */
 int main(int argc, char* args[])
 {
+    if (argc != 3)
+    {
+        std::cout << SHOW_USAGE;
+    }
+
     const std::string imagePath = args[1];
     const std::string indexPath = args[2];
 

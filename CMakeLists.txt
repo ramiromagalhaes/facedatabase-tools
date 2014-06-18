@@ -21,5 +21,9 @@ find_package( Boost  REQUIRED COMPONENTS filesystem system )
 # The library...
 add_subdirectory(lib)
 
-# ...and the tools
+# ...the face database tools...
+add_subdirectory(face)
+
+# ...and the generic tools.
 add_subdirectory(tools)
+
