@@ -12,10 +12,20 @@
 
 
 
+#define USAGE "Usage: " << args[0] << "INDEX_FILE OUTPUT_FOLDER" << std::endl
+
+
+
+/**
+ * Merges many sample images found in different files in a few image files. The
+ * first parameter should be the path of a text file that contains the paths of the
+ * samples. The second should be the directory where the few image files will be written.
+ */
 int main(int argc, char* args[])
 {
     if (argc != 3)
     {
+        std::cout << USAGE;
         return 1;
     }
 
@@ -27,6 +37,7 @@ int main(int argc, char* args[])
          || !boost::filesystem::exists(outputFolder)
          || !boost::filesystem::is_directory(outputFolder) )
     {
+        std::cout << USAGE;
         return 2;
     }
 
