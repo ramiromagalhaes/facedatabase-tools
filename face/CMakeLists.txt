@@ -14,3 +14,6 @@ target_link_libraries( fei ${OpenCV_LIBS} ${Boost_LIBRARIES} )
 add_executable( ar "ar.cpp" )
 target_link_libraries( ar ${OpenCV_LIBS} ${Boost_LIBRARIES} )
 
+#To manipulate the JAFFE database
+add_executable( jaffe "jaffe.cpp" )
+target_link_libraries( jaffe ${OpenCV_LIBS} ${Boost_LIBRARIES} )
