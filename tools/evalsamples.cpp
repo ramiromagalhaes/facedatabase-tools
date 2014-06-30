@@ -26,9 +26,9 @@ struct entry {
  */
 int main(int argc, char* args[])
 {
-    if (argc < 2 && argc > 3)
+    if (argc != 2)
     {
-        std::cout << "Usage: " << args[0] << "IMAGE_PATH" << std::endl;
+        std::cout << "Usage: " << args[0] << " IMAGE_PATH" << std::endl;
         return 3;
     }
     const std::string imagePath = args[1];
@@ -69,7 +69,7 @@ int main(int argc, char* args[])
 
     for(std::vector<entry>::iterator it = stdDeviations.begin(); it != stdDeviations.end(); ++it)
     {
-        std::cout << it->index << '\n';
+        std::cout << it->index << ' ' << it->stdDev << '\n';
     }
 
     return 0;
