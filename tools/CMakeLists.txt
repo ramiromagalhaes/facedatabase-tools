@@ -8,7 +8,7 @@ target_link_libraries( count OpenImageIO)
 
 #Display samples from a list of indexes
 add_executable( show "show.cpp" )
-target_link_libraries( show ${OpenCV_LIBS} OpenImageIO)
+target_link_libraries( show ${OpenCV_LIBS})
 
 #Display samples randomly
 add_executable( showrand "showrand.cpp" )
